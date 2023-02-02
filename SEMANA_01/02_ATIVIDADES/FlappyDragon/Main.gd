@@ -12,7 +12,7 @@ func _ready():
 
 
 # executa essa função a cada frame (60 FPS)
-func _process(delta):
+func _process(_delta):
 	
 	if status == 1: # jogando
 		
@@ -65,12 +65,12 @@ func _process(delta):
 			
 
 # executa essa função quando o dragão bate na coluna
-func _on_columns_body_shape_entered(body_id, body, body_shape, local_shape):
+func _on_columns_body_shape_entered(_body_id, _body, _body_shape, local_shape):
 	if (local_shape < 2): # esse node tem 3 shapes de colisão: 0 e 1 são as colunas
 		status = 0 # muda o status para "parado"
 
 # executa essa função quando o dragão atravessa entre as colunas
-func _on_columns_body_shape_exited(body_id, body, body_shape, local_shape):
+func _on_columns_body_shape_exited(_body_id, _body, _body_shape, local_shape):
 	if (local_shape == 2): # esse node tem 3 shapes de colisão: 0 e 1 são as colunas
 		vscore += 1 # aumenta o score
 		$score.set_text(str(vscore)) # atualiza o painel
