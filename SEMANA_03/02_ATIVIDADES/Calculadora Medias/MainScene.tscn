@@ -1,0 +1,70 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://MainScene.gd" type="Script" id=1]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 408.0
+margin_top = 512.0
+margin_right = 632.0
+margin_bottom = 584.0
+text = "Button"
+
+[node name="Input3" type="LineEdit" parent="."]
+margin_left = 728.0
+margin_top = 168.0
+margin_right = 960.0
+margin_bottom = 264.0
+
+[node name="Input1" type="LineEdit" parent="."]
+margin_left = 88.0
+margin_top = 168.0
+margin_right = 320.0
+margin_bottom = 264.0
+
+[node name="Input2" type="LineEdit" parent="."]
+margin_left = 408.0
+margin_top = 168.0
+margin_right = 640.0
+margin_bottom = 264.0
+
+[node name="Label1" type="Label" parent="."]
+margin_left = 88.0
+margin_top = 120.0
+margin_right = 320.0
+margin_bottom = 158.0
+text = "Input 1"
+align = 1
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 408.0
+margin_top = 120.0
+margin_right = 638.0
+margin_bottom = 158.0
+text = "Input 2"
+align = 1
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 728.0
+margin_top = 120.0
+margin_right = 961.0
+margin_bottom = 158.0
+text = "Input 3"
+align = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 320.0
+margin_top = 304.0
+margin_right = 728.0
+margin_bottom = 464.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 400.0
+margin_bottom = 152.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

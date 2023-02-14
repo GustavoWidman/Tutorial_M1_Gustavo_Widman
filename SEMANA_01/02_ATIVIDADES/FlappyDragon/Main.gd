@@ -7,7 +7,7 @@ var vscore = 0
 # determinar variavel "x" que representa a velocidade horizontal do personagem
 var x = 5 
 # determinar variavel "y" que representa a velocidade vertical do personagem
-var y = 5
+var y = 2
 
 # executa essa função ao carregar o jogo
 func _ready():
