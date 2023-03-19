@@ -1,0 +1,110 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Fonte/DTM-Sans.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Sprites/Title Screen/StartButton/start_button2.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Title Screen/StartButton/start_button1.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Title Screen/QuitButton/quit_button2.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Title Screen/QuitButton/quit_button1.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Title Screen/Title Screen.gd" type="Script" id=6]
+[ext_resource path="res://Sprites/Player/idle/player_idle1.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Player/idle/player_idle2.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Runes/rune2BIG.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Runes/rune3BIG.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Player/idle/player_idle3.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Player/idle/player_idle4.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Enemy/enemy1.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Runes/rune4BIG.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Enemy/enemy5.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Enemy/enemy2.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Enemy/enemy4.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Enemy/enemy3.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Enemy/enemy6.png" type="Texture" id=19]
+
+[sub_resource type="DynamicFont" id=1]
+size = 120
+font_data = ExtResource( 1 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Title Screen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -2.0
+margin_bottom = -2.0
+script = ExtResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="GameTitle" type="RichTextLabel" parent="."]
+modulate = Color( 0.592157, 0, 1, 1 )
+margin_top = 175.0
+margin_right = 1920.0
+margin_bottom = 330.0
+grow_vertical = 2
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Ritual Runner[/center]"
+text = "Ritual Runner"
+
+[node name="StartButton" type="TextureButton" parent="."]
+margin_left = 707.0
+margin_top = 422.0
+margin_right = 929.0
+margin_bottom = 530.0
+rect_scale = Vector2( 2, 2 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 2 )
+
+[node name="QuitButton" type="TextureButton" parent="."]
+margin_left = 707.0
+margin_top = 714.0
+margin_right = 929.0
+margin_bottom = 822.0
+rect_scale = Vector2( 2, 2 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 336, 714 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 372, 176 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 9 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 1552, 176 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 10 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 955, 94 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 14 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( 1604, 737 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 3 )
+
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]

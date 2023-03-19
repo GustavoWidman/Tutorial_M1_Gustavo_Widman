@@ -1,0 +1,108 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Sprites/Player/moving/player1.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Player/moving/player2.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Player/moving/player3.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/moving/player4.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=5]
+[ext_resource path="res://Sprites/Player/idle/player_idle4.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Player/idle/player_idle2.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Player/idle/player_idle3.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Player/idle/player_idle1.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Player/jump/player_jump1.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Player/jump/player_jump4.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Player/jump/player_jump3.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Player/jump/player_jump2.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Player/dead/player_dead.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Player/attack/player_attack1.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Player/attack/player_attack2.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Player/attack/player_attack4.png" type="Texture" id=17]
+[ext_resource path="res://Scenes/interface/theme/default_theme.tres" type="Theme" id=18]
+[ext_resource path="res://Scenes/Player/CollectArea/CollectArea.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Sprites/Player/attack/player_attack3.png" type="Texture" id=20]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 48, 48 )
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 20 ), ExtResource( 17 ) ],
+"loop": false,
+"name": "attack",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "idle",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 11 ) ],
+"loop": false,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "walk",
+"speed": 10.0
+} ]
+
+[sub_resource type="Animation" id=3]
+resource_name = "damaged"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 5 )
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2( 48, 48 )
+shape = SubResource( 4 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 2 )
+frames = SubResource( 1 )
+animation = "attack"
+frame = 3
+playing = true
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 48, 48 )
+offset = Vector2( 0, -230 )
+current = true
+limit_left = 0
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/damaged = SubResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_top = 2.0
+margin_right = 1920.0
+margin_bottom = 1082.0
+theme = ExtResource( 18 )
+align = 1
+valign = 1
+
+[node name="CollectArea" parent="." instance=ExtResource( 19 )]
+position = Vector2( 48, 48 )
