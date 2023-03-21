@@ -107,7 +107,7 @@ texture = ExtResource( 14 )
 position = Vector2( 1604, 737 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 3 )
-frame = 5
+frame = 3
 playing = true
 
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
