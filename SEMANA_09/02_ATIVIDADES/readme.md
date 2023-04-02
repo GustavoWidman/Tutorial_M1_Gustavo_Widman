@@ -26,6 +26,8 @@ for i in range(0,100):
   n+=1
   print(n)
 
+// o algoritimo acima tem complexidade O(n) pois ele executa uma operação de soma e uma de impressão, e isso é feito 100 vezes, ou seja, o número de operações é proporcional ao número de iterações. (resumidamente, um unico for, entao a complexidade é O(n))
+
 #Algoritmo 2
 nome="TEO"
 vet_nome=["T", "E", "O","B", "A", "L", "D", "O"]
@@ -34,11 +36,15 @@ while(nome!= "TEOBALDO"):
     nome+=vet_nome[len(nome)]
     print(nome)
 
+// o algoritimo acima tem complexidade O(n²) pois ele executa uma operação de soma e uma de impressão, e isso é feito 100 vezes, ou seja, o número de operações é proporcional ao número de iterações. (resumidamente, dois whiles, entao a complexidade é O(n²))
+
 #Algoritmo 3
 k=100
 l=1000000000
 soma=k+l
 print(soma)
+
+// o algoritimo acima tem complexidade O(1) pois ele executa uma operação de soma e uma de impressão, e isso é feito 100 vezes, ou seja, o número de operações é proporcional ao número de iterações. (resumidamente, nenhum for ou while etc, entao a complexidade é O(1))
 
 #Algoritmo 4
 def binary_search(vetor, menor_indice, maior_indice, elemento_procurado):
@@ -53,6 +59,8 @@ def binary_search(vetor, menor_indice, maior_indice, elemento_procurado):
       else:
         return binary_search(vetor, indice_do_meio + 1, maior_indice, elemento_procurado)
 
+// o algoritimo acima tem complexidade O(log n) pois ele executa uma operação de soma e uma de impressão, e isso é feito 100 vezes, ou seja, o número de operações é proporcional ao número de iterações. (resumidamente, o algoritimo é recursivo, entao a complexidade é O(log n))
+
 #Algoritmo 5
 m=0
 n=1000
@@ -62,3 +70,4 @@ for i in range (0,n):
       print(m)
       m+=1
 ```
+// o algoritimo acima tem complexidade O(n³) pois ele executa uma operação de soma e uma de impressão, e isso é feito 100 vezes, ou seja, o número de operações é proporcional ao número de iterações. (resumidamente, três fors, entao a complexidade é O(n³))
